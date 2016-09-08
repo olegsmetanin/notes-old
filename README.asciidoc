@@ -1,0 +1,4 @@
+[[index]]
+== Index
+
+link:2016/2016-09/2016-09-08/OReilly/index.asciidoc[2016-09 OReilly Media asciidoc template]

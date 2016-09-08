@@ -1,0 +1,4 @@
+[[OReilly]]
+== OReilly Media asciidoc template
+
+https://github.com/oreillymedia/orm_book_samples/tree/master/asciidoc_only[OReilly Media asciidoc template]
