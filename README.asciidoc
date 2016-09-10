@@ -5,6 +5,6 @@ link:2016/2016-09/2016-09-08/docker-letsencrypt-nginx-proxy-companion-examples/i
 
 link:2016/2016-09/2016-09-08/OReilly/index.asciidoc[2016-09-08 OReilly Media asciidoc template]
 
-
+link:2016/2016-09/2016-09-08/asciidoc-github-examples/index.asciidoc[2016-09-08 Asciidoc github examples]
 
 

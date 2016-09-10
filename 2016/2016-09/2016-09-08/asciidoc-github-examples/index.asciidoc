@@ -1,0 +1,7 @@
+[[asciidoc-github-examples]]
+== asciidoc github examples
+
+https://github.com/asciidoctor/asciidoctor.org/tree/master/docs[Asciidoc github examples]
+
+
+
