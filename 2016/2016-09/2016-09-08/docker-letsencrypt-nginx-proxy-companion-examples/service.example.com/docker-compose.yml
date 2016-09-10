@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  nginx:
+    image: nginx
+    environment:
+      - VIRTUAL_HOST=service.example.com
+      - VIRTUAL_NETWORK=frontend
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=service.example.com
+      - LETSENCRYPT_EMAIL=hi@service.example.com
+    volumes:
+      - "./conf.d/:/etc/nginx/conf.d"
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - frontend
+    restart: always
+
+networks:
+  frontend:
+    external:
+      name: frontend

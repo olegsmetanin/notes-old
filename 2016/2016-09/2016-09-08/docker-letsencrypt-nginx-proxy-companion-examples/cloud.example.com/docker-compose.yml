@@ -1,0 +1,56 @@
+version: '2'
+
+services:
+  lb:
+    image: dockercloud/haproxy
+    environment:
+      - VIRTUAL_HOST=cloud.example.com
+      - VIRTUAL_NETWORK=frontend
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=cloud.example.com
+      - LETSENCRYPT_EMAIL=me@example.com
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - owncloud
+    links:
+      - owncloud
+    networks:
+      - frontend
+      - backend
+    restart: always
+
+  owncloud:
+    image: owncloud
+    volumes:
+      - files:/var/www/html/data
+      - files:/var/www/html/config
+    links:
+      - postgres:owncloud-db
+    networks:
+      - backend
+    restart: always
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=mysecretpassword
+    volumes:
+      - database:/var/lib/postgresql/data
+    networks:
+      - backend
+    restart: always
+
+volumes:
+  database:
+    driver: local
+  files:
+    driver: local
+
+networks:
+  frontend:
+    external:
+      name: frontend
+  backend:
+    external:
+      name: backend

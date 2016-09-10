@@ -1,4 +1,7 @@
 [[index]]
 == Index
 
-link:2016/2016-09/2016-09-08/OReilly/index.asciidoc[2016-09 OReilly Media asciidoc template]
+link:2016/2016-09/2016-09-08/OReilly/index.asciidoc[2016-09-08 OReilly Media asciidoc template]
+
+link:2/2016/2016-09/2016-09-08/docker-letsencrypt-nginx-proxy-companion-examples/index.asciidoc[2016-09-08 Deploy frontend proxy with letsencrypt and ownCloud service]
+
