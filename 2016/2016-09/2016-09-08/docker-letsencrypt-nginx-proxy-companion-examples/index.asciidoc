@@ -4,6 +4,8 @@
 Generic examples:
 https://github.com/fatk/docker-letsencrypt-nginx-proxy-companion-examples/blob/master/docker-compose/v2/simple-site/docker-compose.yml
 
+:sectnums:
+
 === Create bridge network for frontend
 
 ----
