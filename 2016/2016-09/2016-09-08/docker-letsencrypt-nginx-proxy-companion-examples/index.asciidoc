@@ -4,13 +4,13 @@
 Generic examples:
 https://github.com/fatk/docker-letsencrypt-nginx-proxy-companion-examples/blob/master/docker-compose/v2/simple-site/docker-compose.yml
 
-1. Create bridge network for frontend
+=== Create bridge network for frontend
 
 ----
 docker network create -d bridge frontend
 ----
 
-2. Run nginx, nginx-gen and letsencrypt-nginx-proxy-companion with docker-compose
+=== Run nginx, nginx-gen and letsencrypt-nginx-proxy-companion with docker-compose
 
 .docker-compose.yml for frontend proxy
 [source,bash]
@@ -63,19 +63,19 @@ networks:
 
 ----
 
-3. Run frontend proxy
+=== Run frontend proxy
 
 ----
 docker-compose up -d
 ----
 
-4. Create backend network
+=== Create backend network
 
 ----
 docker network create -d bridge backend
 ----
 
-5. Run ownCloud
+=== Run ownCloud
 
 .docker-compose.yml for ownCloud
 [source,bash]
