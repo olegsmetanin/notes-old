@@ -1,3 +1,6 @@
+# disable client_max_body_size;
+client_max_body_size 0;
+
 {{ define "upstream" }}
     {{ if .Address }}
         {{/* If we got the containers from swarm and this container's port is published to host, use host IP:PORT */}}
