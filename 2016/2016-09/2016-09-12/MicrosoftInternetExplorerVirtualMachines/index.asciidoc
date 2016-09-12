@@ -1,0 +1,4 @@
+[[MicrosoftInternetExplorerVirtualMachines]]
+== Microsoft Edge and versions of IE8 through IE11 using free virtual machines
+
+https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/[Microsoft Edge and versions of IE8 through IE11 using free virtual machines]
