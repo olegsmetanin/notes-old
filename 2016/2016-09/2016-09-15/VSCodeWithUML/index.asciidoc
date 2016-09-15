@@ -1,0 +1,4 @@
+[[VSCodeWithUML]]
+== VSCode UML drawing
+
+Install yUML plugin. It will create svg on preview.

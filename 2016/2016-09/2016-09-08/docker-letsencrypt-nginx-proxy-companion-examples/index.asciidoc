@@ -140,3 +140,86 @@ networks:
       name: backend
 
 ----
+
+== Run bitbucket server
+
+----
+version: '2'
+
+services:
+  lb:
+    image: dockercloud/haproxy
+    environment:
+      - VIRTUAL_HOST=git.example.com
+      - VIRTUAL_NETWORK=frontend
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=git.example.com
+      - LETSENCRYPT_EMAIL=git@example.com
+    ports:
+      - "7999:7999"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - bitbucket
+    links:
+      - bitbucket
+    networks:
+      - frontend
+      - backend
+    restart: always
+
+  bitbucket:
+    image: atlassian/bitbucket-server
+    environment:
+      - TCP_PORTS=7999
+      - EXCLUDE_PORTS=5701
+    domainname: smetan.in
+    hostname: git
+    volumes:
+      - files:/var/atlassian/application-data/bitbucket
+    links:
+      - postgres:db
+    networks:
+      - backend
+    restart: always
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=mysecretpassword
+    volumes:
+      - database:/var/lib/postgresql/data
+    networks:
+      - backend
+    restart: always
+
+volumes:
+  database:
+    driver: local
+  files:
+    driver: local
+
+networks:
+  frontend:
+    external:
+      name: frontend
+  backend:
+    external:
+      name: backend
+----
+
+=== Create database for bitbucket server
+----
+docker exec -ti gitexamplecom_postgres_1 bash
+su postgres
+psql
+CREATE DATABASE "bitbucket"
+exit
+----
+
+=== Add permissions for bitbucket daemon
+----
+docker exec -ti --user root gitexamplecom_bitbucket_1 bash
+chown -R daemon /var/atlassian/application-data/bitbucket
+exit
+----

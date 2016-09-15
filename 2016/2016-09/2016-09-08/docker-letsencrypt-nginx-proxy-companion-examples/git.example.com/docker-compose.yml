@@ -8,7 +8,9 @@ services:
       - VIRTUAL_NETWORK=frontend
       - VIRTUAL_PORT=80
       - LETSENCRYPT_HOST=git.example.com
-      - LETSENCRYPT_EMAIL=hi@example.com
+      - LETSENCRYPT_EMAIL=git@example.com
+    ports:
+      - "7999:7999"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
@@ -21,15 +23,14 @@ services:
     restart: always
 
   bitbucket:
-    image: dweomer/atlassian-bitbucket
+    image: atlassian/bitbucket-server
     environment:
-      EXCLUDE_PORTS: 7999
-      BITBUCKET_CONNECTOR_PROXY_NAME: git.example.com
-    domainname: example.com
+      - TCP_PORTS=7999
+      - EXCLUDE_PORTS=5701
+    domainname: smetan.in
     hostname: git
     volumes:
-      - files:/var/lib/bitbucket
-      - ./bitbucket.properties:/var/atlassian/application-data/bitbucket:ro
+      - files:/var/atlassian/application-data/bitbucket
     links:
       - postgres:db
     networks:
